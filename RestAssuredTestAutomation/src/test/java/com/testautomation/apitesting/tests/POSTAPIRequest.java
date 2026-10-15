@@ -41,11 +41,11 @@ public class POSTAPIRequest extends BaseTest {
                         .when()
                         .post()
                         .then()
-                        //.log().all()
+                        .log().all()
                         //.log().ifValidationFails()
                         .assertThat()
                         .statusCode(200)
-                        .body("booking.firstname", Matchers.equalTo("David1"))
+                        .body("booking.firstname", Matchers.equalTo("David"))
                         .body("booking.totalprice", Matchers.equalTo(2000))
                         .body("booking.bookingdates.checkin", Matchers.equalTo("2026-09-02"));
 

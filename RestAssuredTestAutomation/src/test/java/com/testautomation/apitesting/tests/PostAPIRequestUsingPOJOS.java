@@ -2,15 +2,20 @@ package com.testautomation.apitesting.tests;
 
 import com.testautomation.apitesting.pojos.Booking;
 import com.testautomation.apitesting.pojos.BookingDates;
+import com.testautomation.apitesting.utils.FileNameConstants;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.mapper.ObjectMapperDeserializationContext;
 import io.restassured.mapper.ObjectMapperSerializationContext;
 import io.restassured.response.Response;
+import org.apache.commons.io.FileUtils;
 import org.testng.annotations.Test;
 import tools.jackson.databind.ObjectMapper;
 
 import java.awt.print.Book;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.io.IOException;
 
 public class PostAPIRequestUsingPOJOS {
     /**
@@ -18,7 +23,8 @@ public class PostAPIRequestUsingPOJOS {
      * While we are converting JAVA class object to JSON object
      */
     @Test
-    public void postAPIRequest(){
+    public void postAPIRequest() throws IOException {
+
         /* Serialization */
         BookingDates bookingDates = new BookingDates("2026-09-21", "2026-09-23");
         Booking booking = new Booking("David", "Joe", "breakfast", 2000, true, bookingDates);
